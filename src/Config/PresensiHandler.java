@@ -3,6 +3,7 @@ package Config;
 import java.sql.*;
 import java.time.LocalTime;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 public class PresensiHandler {
     // Method untuk cek matkul yang sedang berlangsung dan menyimpan presensi
@@ -28,14 +29,16 @@ public class PresensiHandler {
                         insertPs.setDate(3, java.sql.Date.valueOf(currentDate));
                         insertPs.setTime(4, java.sql.Time.valueOf(currentTime));
                         insertPs.executeUpdate();
-                        System.out.println("Presensi berhasil disimpan!");
+                        JOptionPane.showMessageDialog(null, "Presensi berhasil disimpan!");
                     }
                 } else {
-                    System.out.println("Tidak ada matkul yang sedang berlangsung saat ini.");
+                    JOptionPane.showMessageDialog(null, "Tidak ada matkul yang sedang berlangsung saat ini.");
                 }
+                // JOptionPane.showMessageDialog(this, "Presensi berhasil disimpan!");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 }
